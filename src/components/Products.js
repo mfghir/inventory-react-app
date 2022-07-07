@@ -1,6 +1,17 @@
-import React from "react";
+import React, { useState } from "react";
 
-const Products = () => {
+const Products = ({ categories }) => {
+  const [productsFormData, setProductsFormData] = useState({
+    title: "",
+    quantity: 0,
+    category: "",
+  });
+
+  const changeHandler = (e) => {
+    const { name, value } = e.target;
+    setProductsFormData({ ...productsFormData, [name]: value });
+  };
+
   return (
     <div className="mb-6">
       <h2 className="text-xl text-slate-300 font-bold mb-2">Add New Product</h2>
@@ -11,12 +22,14 @@ const Products = () => {
           </label>
           <input
             type="text"
-            name="product-title"
+            name="title"
             id="product-title"
             className="bg-transparent rounded-xl border border-slate-500 text-slate-400 w-full md:w-auto"
+            value={productsFormData.title}
+            onChange={changeHandler}
           />
         </div>
-        
+
         <div>
           <label
             htmlFor="product-quantity"
@@ -27,8 +40,10 @@ const Products = () => {
           <input
             className="bg-transparent rounded-xl border border-slate-500 text-slate-400 w-full md:w-auto"
             type="number"
-            name="product-quantity"
+            name="quantity"
             id="product-quantity"
+            value={productsFormData.quantity}
+            onChange={changeHandler}
           />
         </div>
 
@@ -40,13 +55,26 @@ const Products = () => {
             category
           </label>
           <select
-            name="product-category"
+            name="category"
             id="product-category"
             className="bg-transparent text-slate-400 rounded-xl w-full"
+            value={productsFormData.category}
+            onChange={changeHandler}
           >
-            <option class="bg-slate-500 text-slate-300" value="">
+            <option className="bg-slate-500 text-slate-300" value="">
               select a category
             </option>
+            {categories.map((category) => {
+              return (
+                <option
+                  key={category.createdAt}
+                  className="bg-slate-500 text-slate-300"
+                  value=""
+                >
+                  {category.title}
+                </option>
+              );
+            })}
           </select>
         </div>
         <div className="flex items-center justify-between gap-x-4">
