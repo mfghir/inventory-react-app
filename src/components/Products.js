@@ -6,10 +6,20 @@ const Products = ({ categories }) => {
     quantity: 0,
     categoryId: "",
   });
+  const [products, setProducts] = useState([]);
 
   const changeHandler = (e) => {
     const { name, value } = e.target;
     setProductsFormData({ ...productsFormData, [name]: value });
+  };
+
+  const addNewProduct = (e) => {
+    e.preventDefault();
+    setProducts((prevState) => [
+      ...prevState,
+      { ...productsFormData, createdAt: new Date().toISOString() },
+    ]);
+    setProductsFormData({ title: "", quantity: "", categoryId: "" });
   };
 
   return (
@@ -81,6 +91,7 @@ const Products = ({ categories }) => {
           <button
             id="add-new-product"
             className="flex-1 bg-slate-500 text-slate-200 rounded-xl py-2"
+            onClick={addNewProduct}
           >
             Add new Product
           </button>
