@@ -10,7 +10,7 @@ const Category = () => {
         </h2>
         <form className="bg-slate-700 p-4 rounded-xl flex flex-col gap-y-4">
           <div>
-            <label for="category-title" className="block mb-1 text-slate-400">
+            <label htmlFor="category-title" className="block mb-1 text-slate-400">
               title
             </label>
             <input
@@ -22,7 +22,7 @@ const Category = () => {
           </div>
           <div>
             <label
-              for="category-description"
+              htmlFor="category-description"
               className="block mb-1 text-slate-400"
             >
               description
