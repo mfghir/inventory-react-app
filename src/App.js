@@ -7,6 +7,7 @@ import Products from "./components/Products";
 
 function App() {
   const [categories, setCategories] = useState([]);
+  const [products, setProducts] = useState([]);
 
   return (
     <div>
@@ -15,8 +16,8 @@ function App() {
 
         <div className="container max-w-screen-sm mx-auto p-4">
           <Category setCategories={setCategories} />
-          <Products categories={categories} />
-          <ProductList  />
+          <Products categories={categories} setProducts={setProducts} />
+          <ProductList products={products} />
         </div>
       </div>
     </div>
