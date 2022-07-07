@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-const Products = ({ categories ,setProducts}) => {
+const Products = ({ categories, setProducts }) => {
   const [productsFormData, setProductsFormData] = useState({
     title: "",
     quantity: 0,
