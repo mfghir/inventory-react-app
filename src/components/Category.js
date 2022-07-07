@@ -1,12 +1,11 @@
 import React, { useState } from "react";
 
-const Category = () => {
+const Category = ({setCategories}) => {
   const [isShow, setIsShow] = useState(false);
   const [categoryFormData, setCategoryFormData] = useState({
     title: "",
     description: "",
   });
-  const [categories, setCategories] = useState([]);
 
   const changeHandler = (e) => {
     const { name, value } = e.target;

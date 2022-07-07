@@ -16,8 +16,12 @@ const Products = () => {
             className="bg-transparent rounded-xl border border-slate-500 text-slate-400 w-full md:w-auto"
           />
         </div>
+        
         <div>
-          <label htmlFor="product-quantity" className="block mb-1 text-slate-400">
+          <label
+            htmlFor="product-quantity"
+            className="block mb-1 text-slate-400"
+          >
             quantity
           </label>
           <input
@@ -27,15 +31,23 @@ const Products = () => {
             id="product-quantity"
           />
         </div>
+
         <div>
-          <label htmlFor="product-category" className="block mb-1 text-slate-400">
+          <label
+            htmlFor="product-category"
+            className="block mb-1 text-slate-400"
+          >
             category
           </label>
           <select
             name="product-category"
             id="product-category"
             className="bg-transparent text-slate-400 rounded-xl w-full"
-          ></select>
+          >
+            <option class="bg-slate-500 text-slate-300" value="">
+              select a category
+            </option>
+          </select>
         </div>
         <div className="flex items-center justify-between gap-x-4">
           <button
