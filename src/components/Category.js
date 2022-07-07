@@ -5,9 +5,9 @@ const Category = () => {
   return (
     <section>
       <div
-        className="mb-6 "
+        className={`mb-6 ${isShow ? "" : "hidden"}`}
         id="category-wrapper"
-        onClick={() => setIsShow(!isShow)}
+        
       >
         <h2 className="text-xl text-slate-300 font-bold mb-2">
           Add New category
@@ -57,7 +57,8 @@ const Category = () => {
 
       <button
         id="toggle-add-category"
-        className="text-slate-600 text-lg mb-4 font-medium"
+        className={`text-slate-600 text-lg mb-4 font-medium ${isShow && "hidden"}`}
+        onClick={() => setIsShow(!isShow)}
       >
         Add new Category?
       </button>
