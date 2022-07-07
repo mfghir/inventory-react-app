@@ -68,7 +68,7 @@ const Products = ({ categories }) => {
             name="categoryId"
             id="product-category"
             className="bg-transparent text-slate-400 rounded-xl w-full"
-            value={productsFormData.category}
+            value={productsFormData.categoryId}
             onChange={changeHandler}
           >
             <option className="bg-slate-500 text-slate-300" value="">
