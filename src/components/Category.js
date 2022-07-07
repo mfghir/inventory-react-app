@@ -4,11 +4,7 @@ const Category = () => {
   const [isShow, setIsShow] = useState(false);
   return (
     <section>
-      <div
-        className={`mb-6 ${isShow ? "" : "hidden"}`}
-        id="category-wrapper"
-        
-      >
+      <div className={`mb-6 ${isShow ? "" : "hidden"}`} id="category-wrapper">
         <h2 className="text-xl text-slate-300 font-bold mb-2">
           Add New category
         </h2>
@@ -42,6 +38,10 @@ const Category = () => {
             <button
               className="flex-1 border border-slate-400 text-slate-400 rounded-xl py-2"
               id="cancel-add-category"
+              onClick={(e) => {
+                e.preventDefault();
+                setIsShow(false);
+              }}
             >
               Cancel
             </button>
@@ -57,8 +57,10 @@ const Category = () => {
 
       <button
         id="toggle-add-category"
-        className={`text-slate-600 text-lg mb-4 font-medium ${isShow && "hidden"}`}
-        onClick={() => setIsShow(!isShow)}
+        className={`text-slate-600 text-lg mb-4 font-medium ${
+          isShow && "hidden"
+        }`}
+        onClick={(prevState) => setIsShow(prevState)}
       >
         Add new Category?
       </button>
