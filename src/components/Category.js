@@ -15,10 +15,16 @@ const Category = () => {
 
   const addNewCategoryHandler = (e) => {
     e.preventDefault();
-    setCategories([
-      ...categories,
-      { ...categoryFormData, createdAt: new Date().toISOString() },
+    // setCategories([
+    //   ...categories,
+    //   { ...categoryFormData, createdAt: new Date().toISOString() },
+    // ]);
+    // or
+    setCategories((prevState)=> [
+        ...prevState,
+        { ...categoryFormData, createdAt: new Date().toISOString() },
     ]);
+    setCategoryFormData({ title: "", description: "" });
   };
 
   return (
