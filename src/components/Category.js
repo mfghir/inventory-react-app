@@ -6,10 +6,19 @@ const Category = () => {
     title: "",
     description: "",
   });
+  const [categories, setCategories] = useState([]);
 
   const changeHandler = (e) => {
     const { name, value } = e.target;
     setCategoryFormData({ ...categoryFormData, [name]: value });
+  };
+
+  const addNewCategoryHandler = (e) => {
+    e.preventDefault();
+    setCategories([
+      ...categories,
+      { ...categoryFormData, createdAt: new Date().toISOString() },
+    ]);
   };
 
   return (
@@ -35,6 +44,7 @@ const Category = () => {
               onChange={changeHandler}
             />
           </div>
+
           <div>
             <label
               htmlFor="category-description"
@@ -51,6 +61,7 @@ const Category = () => {
               onChange={changeHandler}
             ></textarea>
           </div>
+
           <div className="flex items-center justify-between gap-x-4">
             <button
               className="flex-1 border border-slate-400 text-slate-400 rounded-xl py-2"
@@ -65,6 +76,7 @@ const Category = () => {
             <button
               id="add-new-category"
               className="flex-1 bg-slate-500 text-slate-200 rounded-xl py-2"
+              onClick={addNewCategoryHandler}
             >
               Add Category
             </button>
