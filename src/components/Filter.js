@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-const Filter = ({products}) => {
+const Filter = ({products,setFilteredProducts}) => {
   const [sort, setSort] = useState("latest");
   const [searchValue, setSearchValue] = useState("");
 
@@ -11,6 +11,7 @@ const Filter = ({products}) => {
     const filteredProducts = products.filter((p) =>
       p.title.toLowerCase().includes(value)
     );
+    setFilteredProducts(filteredProducts)
   };
 
   return (

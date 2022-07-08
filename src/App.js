@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./App.css";
 import Navbar from "./components/Navbar";
 
@@ -10,6 +10,11 @@ import Filter from "./components/Filter";
 function App() {
   const [categories, setCategories] = useState([]);
   const [products, setProducts] = useState([]);
+  const [filteredProducts, setFilteredProducts] = useState([]);
+
+  useEffect(() => {
+    
+  }, [products]);
 
   return (
     <div>
@@ -19,9 +24,9 @@ function App() {
         <div className="container max-w-screen-sm mx-auto p-4">
           <Category setCategories={setCategories} />
           <Products categories={categories} setProducts={setProducts} />
-          <Filter products={products} />
+          <Filter products={products}  setFilteredProducts={setFilteredProducts} />
           <ProductList
-            products={products}
+            products={filteredProducts}
             categories={categories}
             setProducts={setProducts}
           />
