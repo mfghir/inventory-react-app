@@ -5,6 +5,7 @@ import Navbar from "./components/Navbar";
 import Category from "./components/Category";
 import ProductList from "./components/ProductList";
 import Products from "./components/Products";
+import Filter from "./components/Filter";
 
 function App() {
   const [categories, setCategories] = useState([]);
@@ -18,7 +19,12 @@ function App() {
         <div className="container max-w-screen-sm mx-auto p-4">
           <Category setCategories={setCategories} />
           <Products categories={categories} setProducts={setProducts} />
-          <ProductList products={products}  categories={categories} setProducts={setProducts} />
+          <Filter products={products} />
+          <ProductList
+            products={products}
+            categories={categories}
+            setProducts={setProducts}
+          />
         </div>
       </div>
     </div>

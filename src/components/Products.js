@@ -16,7 +16,11 @@ const Products = ({ categories, setProducts }) => {
     e.preventDefault();
     setProducts((prevState) => [
       ...prevState,
-      { ...productsFormData, createdAt: new Date().toISOString() },
+      {
+        ...productsFormData,
+        createdAt: new Date().toISOString(),
+        id: new Date().getTime(),
+      },
     ]);
     setProductsFormData({ title: "", quantity: "", categoryId: "" });
   };
