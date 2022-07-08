@@ -18,8 +18,8 @@ function App() {
   useEffect(() => {
     let res = products;
     res = filterSearchTitle(res);
-    res = sortDate(res)
-    setFilteredProducts(res)
+    res = sortDate(res);
+    setFilteredProducts(res);
   }, [products, sort, searchValue]);
 
   const sortHandler = (e) => {
@@ -44,6 +44,28 @@ function App() {
   const filterSearchTitle = (array) => {
     return array.filter((p) => p.title.toLowerCase().includes(sort));
   };
+
+  useEffect(() => {
+    const savedProdocuts = JSON.parse(localStorage.getItem("products")) || [];
+    const savedCategories = JSON.parse(localStorage.getItem("categories")) || [];
+
+    setProducts(savedProdocuts)
+    setCategories(savedCategories)
+  }, []);
+
+
+  useEffect(() => {
+    if(products.length){
+
+      localStorage.setItem("products", JSON.stringify(products))
+    }
+  }, [products]);
+  useEffect(() => {
+    if(categories.length){
+
+    localStorage.setItem("categories", JSON.stringify(categories))
+    }
+  }, [categories]);
 
   return (
     <div>
