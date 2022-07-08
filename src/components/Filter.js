@@ -4,9 +4,21 @@ const Filter = ({products,setFilteredProducts}) => {
   const [sort, setSort] = useState("latest");
   const [searchValue, setSearchValue] = useState("");
 
-  const sortHandler = (e) => {};
+  const sortHandler = (e) => {
+    setSort(e.target.value)
+    const sorttedProducts = [...products]
+    sorttedProducts.sort((a, b) => {
+      if (e.target.value === "latest") {
+        return new Date(a.createdAt) > new Date(b.createdAt) ? -1 : 1;
+      } else if (e.target.value === "earliest") {
+        return new Date(a.createdAt) > new Date(b.createdAt) ? 1 : -1;
+      }
+    });
+    setFilteredProducts(sorttedProducts)
+  };
 
   const searchHandler = (e) => {
+    setSearchValue(e.target.value)
     const value = e.target.value.trim().toLowerCase();
     const filteredProducts = products.filter((p) =>
       p.title.toLowerCase().includes(value)
