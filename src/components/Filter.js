@@ -1,30 +1,8 @@
 import React, { useState } from "react";
 
-const Filter = ({products,setFilteredProducts}) => {
-  const [sort, setSort] = useState("latest");
-  const [searchValue, setSearchValue] = useState("");
+const Filter = ({onSort,onSearch , sort , searchValue}) => {
 
-  const sortHandler = (e) => {
-    setSort(e.target.value)
-    const sorttedProducts = [...products]
-    sorttedProducts.sort((a, b) => {
-      if (e.target.value === "latest") {
-        return new Date(a.createdAt) > new Date(b.createdAt) ? -1 : 1;
-      } else if (e.target.value === "earliest") {
-        return new Date(a.createdAt) > new Date(b.createdAt) ? 1 : -1;
-      }
-    });
-    setFilteredProducts(sorttedProducts)
-  };
-
-  const searchHandler = (e) => {
-    setSearchValue(e.target.value)
-    const value = e.target.value.trim().toLowerCase();
-    const filteredProducts = products.filter((p) =>
-      p.title.toLowerCase().includes(value)
-    );
-    setFilteredProducts(filteredProducts)
-  };
+ 
 
   return (
     <div>
@@ -38,7 +16,7 @@ const Filter = ({products,setFilteredProducts}) => {
           id="search-input"
           className="bg-transparent rounded-xl border border-slate-500 text-slate-400"
           value={searchValue}
-          onChange={searchHandler}
+          onChange={onSearch}
         />
       </div>
 
@@ -51,6 +29,7 @@ const Filter = ({products,setFilteredProducts}) => {
           id="sort-products"
           className="bg-transparent text-slate-400 rounded-xl"
           value={sort}
+          onChange={onSort}
         >
           <option className="bg-slate-500 text-slate-300" value="">
             select a category

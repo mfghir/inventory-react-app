@@ -12,9 +12,38 @@ function App() {
   const [products, setProducts] = useState([]);
   const [filteredProducts, setFilteredProducts] = useState([]);
 
+  const [sort, setSort] = useState("latest");
+  const [searchValue, setSearchValue] = useState("");
+
   useEffect(() => {
-    
-  }, [products]);
+    let res = products;
+    res = filterSearchTitle(res);
+    res = sortDate(res)
+    setFilteredProducts(res)
+  }, [products, sort, searchValue]);
+
+  const sortHandler = (e) => {
+    setSort(e.target.value);
+  };
+
+  const sortDate = (array) => {
+    const sorttedProducts = [...array];
+    return sorttedProducts.sort((a, b) => {
+      if (sort === "latest") {
+        return new Date(a.createdAt) > new Date(b.createdAt) ? -1 : 1;
+      } else if (sort === "earliest") {
+        return new Date(a.createdAt) > new Date(b.createdAt) ? 1 : -1;
+      }
+    });
+  };
+
+  const searchHandler = (e) => {
+    setSearchValue(e.target.value.trim().toLowerCase());
+  };
+
+  const filterSearchTitle = (array) => {
+    return array.filter((p) => p.title.toLowerCase().includes(sort));
+  };
 
   return (
     <div>
@@ -24,7 +53,12 @@ function App() {
         <div className="container max-w-screen-sm mx-auto p-4">
           <Category setCategories={setCategories} />
           <Products categories={categories} setProducts={setProducts} />
-          <Filter products={products}  setFilteredProducts={setFilteredProducts} />
+          <Filter
+            onSort={sortHandler}
+            onSearch={searchHandler}
+            sort={sort}
+            searchValue={searchValue}
+          />
           <ProductList
             products={filteredProducts}
             categories={categories}
