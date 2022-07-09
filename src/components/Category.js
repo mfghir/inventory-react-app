@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-const Category = ({setCategories}) => {
+const Category = ({ setCategories }) => {
   const [isShow, setIsShow] = useState(false);
   const [categoryFormData, setCategoryFormData] = useState({
     title: "",
@@ -19,9 +19,13 @@ const Category = ({setCategories}) => {
     //   { ...categoryFormData, createdAt: new Date().toISOString() },
     // ]);
     // or
-    setCategories((prevState)=> [
-        ...prevState,
-        { ...categoryFormData, createdAt: new Date().toISOString() },
+    setCategories((prevState) => [
+      ...prevState,
+      {
+        ...categoryFormData,
+        createdAt: new Date().toISOString(),
+        id: new Date().getTime(),
+      },
     ]);
     setCategoryFormData({ title: "", description: "" });
   };
@@ -94,7 +98,7 @@ const Category = ({setCategories}) => {
         className={`text-slate-600 text-lg mb-4 font-medium ${
           isShow && "hidden"
         }`}
-        onClick={(prevState) => setIsShow(prevState)}
+        onClick={() => setIsShow((prevState) => !prevState)}
       >
         Add new Category?
       </button>

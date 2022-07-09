@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 
 const Filter = ({
   onSort,
@@ -39,10 +39,10 @@ const Filter = ({
           <option className="bg-slate-500 text-slate-300" value="">
             select a category
           </option>
-          <option className="bg-slate-500 text-slate-300" value="newest">
+          <option className="bg-slate-500 text-slate-300" value="latest">
             latest
           </option>
-          <option className="bg-slate-500 text-slate-300" value="oldest">
+          <option className="bg-slate-500 text-slate-300" value="earliest">
             earliest
           </option>
         </select>

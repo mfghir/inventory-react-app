@@ -22,7 +22,7 @@ function App() {
     res = filterSelectCategory(res);
     res = sortDate(res);
     setFilteredProducts(res);
-  }, [products, sort, searchValue,selectedCategory]);
+  }, [products, sort, searchValue, selectedCategory]);
 
   const sortHandler = (e) => {
     setSort(e.target.value);
@@ -44,7 +44,7 @@ function App() {
   };
 
   const filterSearchTitle = (array) => {
-    return array.filter((p) => p.title.toLowerCase().includes(sort));
+    return array.filter((p) => p.title.toLowerCase().includes(searchValue));
   };
 
   const selectCategoryHandler = (e) => {
@@ -78,28 +78,26 @@ function App() {
   }, [categories]);
 
   return (
-    <div>
-      <div className="bg-slate-800 min-h-screen">
-        <Navbar />
+    <div className="bg-slate-800 min-h-screen">
+      <Navbar products={products} />
 
-        <div className="container max-w-screen-sm mx-auto p-4">
-          <Category setCategories={setCategories} />
-          <Products categories={categories} setProducts={setProducts} />
-          <Filter
-            onSort={sortHandler}
-            onSearch={searchHandler}
-            sort={sort}
-            searchValue={searchValue}
-            categories={categories}
-            onselectCategory={selectCategoryHandler}
-            selectedCategory={selectedCategory}
-          />
-          <ProductList
-            products={filteredProducts}
-            categories={categories}
-            setProducts={setProducts}
-          />
-        </div>
+      <div className="container max-w-screen-sm mx-auto p-4">
+        <Category setCategories={setCategories} />
+        <Products categories={categories} setProducts={setProducts} />
+        <Filter
+          onSort={sortHandler}
+          onSearch={searchHandler}
+          sort={sort}
+          searchValue={searchValue}
+          categories={categories}
+          onselectCategory={selectCategoryHandler}
+          selectedCategory={selectedCategory}
+        />
+        <ProductList
+          products={filteredProducts}
+          categories={categories}
+          setProducts={setProducts}
+        />
       </div>
     </div>
   );

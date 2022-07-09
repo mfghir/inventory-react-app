@@ -80,9 +80,9 @@ const Products = ({ categories, setProducts }) => {
             {categories.map((category) => {
               return (
                 <option
-                  key={category.createdAt}
+                  key={category.id}
                   className="bg-slate-500 text-slate-300"
-                  value={category.createdAt}
+                  value={category.id}
                 >
                   {category.title}
                 </option>
@@ -90,6 +90,7 @@ const Products = ({ categories, setProducts }) => {
             })}
           </select>
         </div>
+
         <div className="flex items-center justify-between gap-x-4">
           <button
             id="add-new-product"
@@ -99,6 +100,7 @@ const Products = ({ categories, setProducts }) => {
             Add new Product
           </button>
         </div>
+
       </form>
     </div>
   );
